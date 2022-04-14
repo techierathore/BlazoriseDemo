@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>BlazoriseDemo</PageTitle>
+
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                <NavMenu/>
+            </LayoutSiderContent>
+        </LayoutSider>
+        <Layout>
+        <LayoutHeader Fixed>
+             <TopBar/>
+        </LayoutHeader>
+            <LayoutContent  Padding="Padding.Is4.OnX">
+               @Body
+            </LayoutContent>
+        <LayoutFooter> Footer Content </LayoutFooter>
+        </Layout>
+    </Layout>

@@ -1,0 +1,57 @@
+﻿<Bar Breakpoint="Breakpoint.Desktop" 
+    Background="Background.Primary" 
+    ThemeContrast="ThemeContrast.Dark">
+    <BarBrand>
+        <BarItem>
+                <BarIcon IconName="IconName.Dashboard" />
+                Blazorise Demo
+        </BarItem>
+    </BarBrand>
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <BarLink To="https://blazorise.com/">Home</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>More</BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="https://blazorise.com/docs/quick-start/">
+                            Quick-Start Guide
+                        </BarDropdownItem>
+                        <BarDropdownDivider />
+                        <BarDropdownItem To="https://blazorise.com/docs/usage/">
+                            Usage
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>Level1</BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem>Level1.1</BarDropdownItem>
+                        <BarDropdown>
+                            <BarDropdownToggle>Level2</BarDropdownToggle>
+                            <BarDropdownMenu>
+                                <BarDropdownItem>Level2.1</BarDropdownItem>
+                                <BarDropdown>
+                                    <BarDropdownToggle>Level3</BarDropdownToggle>
+                                    <BarDropdownMenu>
+                                        <BarDropdownItem>Level3.1</BarDropdownItem>
+                                    </BarDropdownMenu>
+                                </BarDropdown>
+                            </BarDropdownMenu>
+                        </BarDropdown>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+
+        </BarStart>
+        <BarEnd>
+            <BarItem>
+                <BarLink To="https://github.com/Megabit/Blazorise">GitHub</BarLink>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
