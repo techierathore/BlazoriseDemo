@@ -1,4 +1,4 @@
-﻿
+﻿<Blazorise.ThemeProvider Theme="@AppTheme">
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -11,3 +11,75 @@
         </LayoutView>
     </NotFound>
 </Router>
+</Blazorise.ThemeProvider>
+
+@code{
+    private Theme AppTheme = new Theme
+    {
+BarOptions = new ThemeBarOptions
+            {
+                HorizontalHeight = "72px",
+                VerticalWidth = "260px",
+                DarkColors = new()
+                {
+                    BackgroundColor = "#313a46",
+                    DropdownColorOptions = new()
+                    {
+                        BackgroundColor = "#313a46",
+                    },
+                    ItemColorOptions = new()
+                    {
+                        ActiveBackgroundColor = "#313a46",
+                        ActiveColor = "#ffffff",
+                        HoverBackgroundColor = "#222830",
+                        HoverColor = "#bccee4",
+                    },
+                    Color = "#8391a2",
+                }
+            },
+        BreakpointOptions = new()
+        {
+        },
+        //SpacingOptions = new()
+        //{
+        //},
+        ColorOptions = new()
+        {
+            Primary = "#23C02E",
+            //Secondary = "#A65529",
+            //Success = "#23C02E",
+            //Info = "#9BD8FE",
+            //Warning = "#F8B86C",
+            //Danger = "#F95741",
+            //Light = "#F0F0F0",
+            //Dark = "#535353",
+        },
+        BackgroundOptions = new()
+        {
+            Primary = "#0288D1",
+        },
+        TextColorOptions = new()
+        {
+        },
+        //ButtonOptions = new ThemeButtonOptions { },
+        //DropdownOptions = new ThemeDropdownOptions { },
+        InputOptions = new()
+        {
+            CheckColor = "#0288D1",
+        },
+        //CardOptions = new ThemeCardOptions { },
+        //ModalOptions = new ThemeModalOptions { },
+        //TabsOptions = new ThemeTabsOptions { },
+        //ProgressOptions = new ThemeProgressOptions { },
+        //AlertOptions = new ThemeAlertOptions { },
+        //BreadcrumbOptions = new ThemeBreadcrumbOptions { },
+        //BadgeOptions = new ThemeBadgeOptions { },
+        //PaginationOptions = new ThemePaginationOptions { },
+        //TooltipOptions = new ThemeTooltipOptions
+        //{
+        //    BackgroundColor = "#22c8ce",
+        //    BackgroundOpacity = .7f,
+        //    Color = "#ff0000",
+        //},
+    };
+}

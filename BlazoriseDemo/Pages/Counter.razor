@@ -7,6 +7,7 @@
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<Button class="btn btn-primary" Clicked="@(()=>OnThemeColorChanged("#d16f9e"))">Change theme</Button>
 
 @code {
     private int currentCount = 0;
@@ -15,4 +16,19 @@
     {
         currentCount++;
     }
+
+     Task OnThemeColorChanged( string value )
+    {
+        if ( Theme?.ColorOptions != null )
+            Theme.ColorOptions.Primary = value;
+
+        if ( Theme?.BackgroundOptions != null )
+            Theme.BackgroundOptions.Primary = value;
+
+        Theme.ThemeHasChanged();
+
+        return Task.CompletedTask;
+    }
+
+    [CascadingParameter] Theme Theme { get; set; }
 }
