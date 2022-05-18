@@ -1,0 +1,69 @@
+﻿@page "/GridEx"
+
+<Row>
+    <Column>
+        <Card Margin="Margin.Is4.OnY">
+            <CardHeader>
+                <CardTitle>Data Grid</CardTitle>
+            </CardHeader>
+            <CardBody>
+                <CardText>Combine diferent datagrid options</CardText>
+            </CardBody>
+            <CardBody>
+                <DataGrid @ref="dataGrid" TItem="Employee" Data="@dataModels" Narrow=true  
+                            Sortable="false" Filterable="false" ShowPager="false" PageSize="12"
+                            UseInternalEditing="false" Editable="false" Striped="false" 
+                            Bordered="true" Hoverable="true" Responsive="true">
+                    <DataGridColumns>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.FirstName)" Caption="First Name" />
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.LastName)" Caption="Last Name" />
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.Email)" Caption="Email" />
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.City)" Caption="City" />
+                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:dd-MM-yyyy}" Caption="Date Of Birth" />
+                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:HH:mm:ss}" Caption="Time Of Birth" />
+                        <DataGridColumn TItem="Employee" Caption="Select">
+                            <DisplayTemplate>
+                                <Button Color="Color.Primary" Clicked="@GridButtonClicked">Select</Button>
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                    </DataGridColumns>
+                </DataGrid>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+<Row>
+    <Column>
+        <Card>
+            <CardHeader>
+                <CardTitle>Selected Employee</CardTitle>
+            </CardHeader>
+            <CardBody>
+                <Fields>
+                    <Field>
+                        <FieldLabel>First Name</FieldLabel>
+                        <FieldBody>
+                            <TextEdit ReadOnly Text="@selectedEmployee?.FirstName"></TextEdit>
+                        </FieldBody>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Last Name</FieldLabel>
+                        <TextEdit ReadOnly Text="@selectedEmployee?.LastName"></TextEdit>
+                    </Field>
+                </Fields>
+                <Fields>
+                    <Field>
+                        <FieldLabel>Email</FieldLabel>
+                        <FieldBody>
+                            <TextEdit ReadOnly Text="@selectedEmployee?.Email"></TextEdit>
+                        </FieldBody>
+                    </Field>
+                    <Field>
+                        <FieldLabel>City</FieldLabel>
+                        <TextEdit ReadOnly Text="@selectedEmployee?.City"></TextEdit>
+                    </Field>
+                </Fields>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>

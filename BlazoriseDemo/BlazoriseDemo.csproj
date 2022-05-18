@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazorise.Bootstrap" Version="1.0.3" />
-    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.0.3" />
+    <Content Remove="Resources\CountryData.json" />
+    <Content Remove="Resources\EmployeeData.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CountryData.json" />
+    <EmbeddedResource Include="Resources\EmployeeData.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazorise.Bootstrap" Version="1.0.4" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.0.4" />
+	<PackageReference Include="Blazorise.DataGrid" Version="1.0.4" />	
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,54 @@
+﻿@if (PageObj !=null)
+{
+    <Modal @ref="@PlaceModal">
+        <ModalContent Size="ModalSize.Default" Centered="true">
+            <ModalHeader>
+                <ModalTitle>
+                    @PageHeader
+                </ModalTitle>
+                <CloseButton />
+            </ModalHeader>
+            <ModalBody>
+                <EditForm Model="@PageObj">
+                    <DataAnnotationsValidator />
+                    <Field Horizontal>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">First Name</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                             <TextEdit ReadOnly Text="@PageObj.FirstName" />
+                        </FieldBody>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Last Name</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                             <TextEdit ReadOnly Text="@PageObj.LastName" />
+                        </FieldBody>
+                    </Field>
+                    <Field Horizontal>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Email</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                            <TextEdit ReadOnly Text="@PageObj.Email" />
+                        </FieldBody>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">City</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                            <TextEdit ReadOnly Text="@PageObj.City" />
+                        </FieldBody>
+                    </Field>
+                    <Field Horizontal>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Zip</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                            <TextEdit ReadOnly Text="@PageObj.Zip" />
+                        </FieldBody>
+                        <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Gender</FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                            <TextEdit ReadOnly Text="@PageObj.Gender" />
+                        </FieldBody>
+                    </Field>
+                    <Field Horizontal>
+                        <FieldLabel ColumnSize="ColumnSize.Is7.OnMobile"></FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
+                            <Button Color="Color.Secondary" Clicked="@CloseModal">Close</Button>
+                        </FieldBody>
+                    </Field>
+                </EditForm>
+            </ModalBody>
+        </ModalContent>
+    </Modal>
+}
