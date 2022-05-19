@@ -1,43 +1,67 @@
 ﻿@page "/EmpList"
 <Row Padding="Padding.Is5.OnX">
-     <Column ColumnSize="ColumnSize.Is12">
+    <Column ColumnSize="ColumnSize.Is12">
         <Card Margin=Margin.Is4.FromBottom Shadow=Shadow.Small Flex="Flex.Fill" Width="Width.Is100">
             <CardBody TextAlignment=TextAlignment.Center VerticalAlignment=VerticalAlignment.Middle>
-                <Heading Size="HeadingSize.Is5" 
-                    Margin="Margin.Is2.FromTop.Is3.FromBottom"> Places List
+                <Heading Size="HeadingSize.Is5"
+                         Margin="Margin.Is2.FromTop.Is3.FromBottom">
+                    Places List
                 </Heading>
-
-                        @if (ObjectList == null)
-                        {
-                            <p><em>Loading...</em></p>
-                        }
-                        else
-                        {
-                             <DataGrid TItem="Employee" Data="@ObjectList" @bind-SelectedRow="@SelectedObj" 
-                                        Sortable="true" Filterable="false" ShowPager="true"  PageSize="12"
-                                        UseInternalEditing="false" Editable="false" Striped="false" 
-                                        Bordered="true" Hoverable="true" Responsive="true">
-                                <DataGridColumns>
-                                    <DataGridColumn TItem="Employee" Field="@nameof(Employee.FirstName)" Caption="First Name" />
-                                    <DataGridColumn TItem="Employee" Field="@nameof(Employee.LastName)" Caption="Last Name" />
-                                    <DataGridColumn TItem="Employee" Field="@nameof(Employee.Email)" Caption="Email" />
-                                    <DataGridColumn TItem="Employee" Field="@nameof(Employee.City)" Caption="City" />
-                                    <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:dd-MM-yyyy}" Caption="Date Of Birth" />
-                                    <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:HH:mm:ss}" Caption="Time Of Birth" />
-                                    <DataGridColumn TItem="Employee">
-                                        <DisplayTemplate>
-                                            <a class="btn btn-secondary table-btn"
-                                               @onclick="(() => OpenEditDialog(context.Id))">
-                                                <i class="fa fa-eye"> &nbsp; Show Detail</i>
-                                            </a>
-                                        </DisplayTemplate>
-                                    </DataGridColumn>
-                                </DataGridColumns>
-                            </DataGrid>
-                        }
+                <DataGrid TItem="Employee" 
+                          Data="@ObjectList"
+                          @bind-SelectedRow="@SelectedObj"
+                          Sortable 
+                          Filterable="false"
+                          ShowPager
+                          PageSize="12"
+                          UseInternalEditing="false"
+                          CommandMode="DataGridCommandMode.Commands"
+                          Striped="false"
+                          Bordered
+                          Hoverable
+                          Responsive
+                          DetailRowTrigger="@((e) => e.Item.Id == SelectedObj?.Id)">
+                    <EmptyTemplate>
+                        <Span>
+                            <Icon Name="IconName.InfoCircle" TextColor="TextColor.Info" Margin="Margin.Is2.FromEnd" />
+                            No records...
+                        </Span>
+                    </EmptyTemplate>
+                    <LoadingTemplate>
+                        <Paragraph Italic>Loading...</Paragraph>
+                    </LoadingTemplate>
+                    <DataGridColumns>
+                        <DataGridCommandColumn>
+                            <NewCommandTemplate>
+                                <Button Color="Color.Success" Clicked="@context.Clicked">@context.LocalizationString</Button>
+                            </NewCommandTemplate>
+                            <EditCommandTemplate>
+                                <Button Color="Color.Secondary" Clicked="@context.Clicked">@context.LocalizationString</Button>
+                            </EditCommandTemplate>
+                        </DataGridCommandColumn>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.FirstName)" Caption="First Name"/>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.LastName)" Caption="Last Name"/>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.Email)" Caption="Email"/>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.City)" Caption="City"/>
+                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:dd-MM-yyyy}" Caption="Date Of Birth"/>
+                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:HH:mm:ss}" Caption="Time Of Birth"/>
+                        <DataGridColumn TItem="Employee" Field="@nameof(Employee.Id)" Caption="Details">
+                            <DisplayTemplate>
+                                <Span>
+                                    <Button Color="Color.Secondary"
+                                            Clicked="() => OpenEditDialog(context)">
+                                            <Icon Name="IconName.Eye"/>
+                                            Show Detail
+                                        </Button>
+                                </Span>
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                    </DataGridColumns>
+                </DataGrid>
+                }
             </CardBody>
         </Card>
-     </Column>
+    </Column>
 </Row>
 
-<EmpModel @ref="PlaceDialog" CloseEventCallback="@OnDialogClose"></EmpModel>
+<EmpModel @ref="PlaceDialog" CloseEventCallback="@OnDialogClose" />

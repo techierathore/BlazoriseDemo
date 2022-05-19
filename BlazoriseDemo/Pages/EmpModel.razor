@@ -1,44 +1,44 @@
-﻿@if (PageObj !=null)
-{
-    <Modal @ref="@PlaceModal">
-        <ModalContent Size="ModalSize.Default" Centered="true">
+﻿    <Modal @ref="@PlaceModal">
+        <ModalContent Size="ModalSize.Default" Centered>
             <ModalHeader>
                 <ModalTitle>
                     @PageHeader
                 </ModalTitle>
-                <CloseButton />
+                <CloseButton/>
             </ModalHeader>
             <ModalBody>
-                <EditForm Model="@PageObj">
-                    <DataAnnotationsValidator />
+            @if (displayObject is not null)
+            {
+                <EditForm Model="@displayObject">
+                    <DataAnnotationsValidator/>
                     <Field Horizontal>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">First Name</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                             <TextEdit ReadOnly Text="@PageObj.FirstName" />
+                            <TextEdit ReadOnly Text="@displayObject?.FirstName"/>
                         </FieldBody>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Last Name</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                             <TextEdit ReadOnly Text="@PageObj.LastName" />
+                            <TextEdit ReadOnly Text="@displayObject?.LastName"/>
                         </FieldBody>
                     </Field>
                     <Field Horizontal>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Email</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                            <TextEdit ReadOnly Text="@PageObj.Email" />
+                            <TextEdit ReadOnly Text="@displayObject?.Email"/>
                         </FieldBody>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">City</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                            <TextEdit ReadOnly Text="@PageObj.City" />
+                            <TextEdit ReadOnly Text="@displayObject?.City"/>
                         </FieldBody>
                     </Field>
                     <Field Horizontal>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Zip</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                            <TextEdit ReadOnly Text="@PageObj.Zip" />
+                            <TextEdit ReadOnly Text="@displayObject?.Zip"/>
                         </FieldBody>
                         <FieldLabel ColumnSize="ColumnSize.Is1.OnMobile">Gender</FieldLabel>
                         <FieldBody ColumnSize="ColumnSize.Is5.OnMobile">
-                            <TextEdit ReadOnly Text="@PageObj.Gender" />
+                            <TextEdit ReadOnly Text="@displayObject?.Gender"/>
                         </FieldBody>
                     </Field>
                     <Field Horizontal>
@@ -48,7 +48,7 @@
                         </FieldBody>
                     </Field>
                 </EditForm>
+            }
             </ModalBody>
         </ModalContent>
     </Modal>
-}

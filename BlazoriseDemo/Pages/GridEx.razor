@@ -20,10 +20,10 @@
                         <DataGridColumn TItem="Employee" Field="@nameof(Employee.Email)" Caption="Email" />
                         <DataGridColumn TItem="Employee" Field="@nameof(Employee.City)" Caption="City" />
                         <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:dd-MM-yyyy}" Caption="Date Of Birth" />
-                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:HH:mm:ss}" Caption="Time Of Birth" />
+                        <DataGridDateColumn TItem="Employee" Field="@nameof(Employee.DateOfBirth)" DisplayFormat="{0:t}" Caption="Time Of Birth" />
                         <DataGridColumn TItem="Employee" Caption="Select">
                             <DisplayTemplate>
-                                <Button Color="Color.Primary" Clicked="@GridButtonClicked">Select</Button>
+                                <Button Color="Color.Primary" Clicked="() => GridButtonClicked(context)">Select</Button>
                             </DisplayTemplate>
                         </DataGridColumn>
                     </DataGridColumns>
