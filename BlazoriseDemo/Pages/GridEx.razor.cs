@@ -18,10 +18,13 @@ namespace BlazoriseDemo.Pages
             dataModels = inMemoryDataModels.Take(50).ToList();
             await base.OnInitializedAsync();
         }
-        protected void GridButtonClicked()
+        private Task GridButtonClicked(Employee employee)
         {
-            selectedEmployee = dataGrid.SelectedRow;
+            selectedEmployee = employee;
+            
             StateHasChanged();
+
+            return Task.CompletedTask;
         }
      }
 }

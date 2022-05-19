@@ -4,31 +4,46 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazoriseDemo.Pages
 {
-    public partial class EmpList
+    public partial class EmpList: ComponentBase
     {
         [Inject] private EmployeeData EmployeeData { get; set; }
+        
         public string SelCountry { get; set; }
-        public Employee SelectedObj { get; set; }
-        protected EmpModel PlaceDialog { get; set; }
+        
+        private Employee SelectedObj { get; set; }
+
+        private Int32? _employeeId = 0;
+
+        private EmpModel PlaceDialog;
+        
         private List<Employee> ObjectList = new();
+        
         private List<Employee> inMemoryDataModels;
+        
         protected override async Task OnInitializedAsync()
         {
             inMemoryDataModels = await EmployeeData.GetDataAsync();
+
             ObjectList = inMemoryDataModels.Take(50).ToList();
-            await base.OnInitializedAsync();
         }
-        protected void OpenEditDialog(long aObjectId)
+        
+        private Task OpenEditDialog(Employee employee)
         {
-            PlaceDialog.ShowModal(aObjectId);
+            PlaceDialog.ShowEditModal(employee);
+
+            StateHasChanged();
+
+            return Task.CompletedTask;
         }
 
-        protected void OpenAddDialog()
+        private void OpenAddDialog()
         {
             PlaceDialog.ShowModal();
         }
-        public void OnDialogClose()
+        
+        private void OnDialogClose()
         {
+            _employeeId = null;
             StateHasChanged();
         }
     }

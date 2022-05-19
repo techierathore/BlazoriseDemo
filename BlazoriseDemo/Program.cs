@@ -10,7 +10,9 @@ builder.Services
         options.Immediate = true;
     })
     .AddBootstrapProviders()
+    .AddBootstrapComponents()
     .AddFontAwesomeIcons();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
